@@ -1,0 +1,18 @@
+<div class="news-list">
+    <div class="news-item" *ngFor="let newsItem of newsList">
+      <div class="news-image">
+        <img src="{{ newsItem.urlToImage }}" alt="{{ newsItem.title }}" />
+      </div>
+      <div class="news-content">
+        <h2>{{ newsItem.title }}</h2>
+        <p class="published-date">{{ newsItem.publishedAt | date }}</p>
+        <p class="short-description">{{ newsItem.description | slice:0:100 }}...</p>
+        <a href="#" (click)="showFullDescription(newsItem)">View More</a>
+        <div class="full-description" *ngIf="newsItem.showFullDescription">
+          <p>{{ newsItem.content }}</p>
+          <a href="{{ newsItem.url }}" target="_blank">Read full article</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
